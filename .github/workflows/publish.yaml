@@ -1,0 +1,26 @@
+on:
+  schedule:
+    # * is a special character in YAML so you have to quote this string
+    - cron:  '57 23 * * *'
+
+  watch:
+    types: [started]
+
+jobs:
+  publish:
+    name: Publish github pages
+    runs-on: ubuntu-latest
+    if: github.actor == github.event.repository.owner.login
+
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Run script and move to place
+        run: ./scripts/output.sh
+
+      - name: deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: master
