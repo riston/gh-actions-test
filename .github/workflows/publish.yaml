@@ -1,3 +1,4 @@
+name: Static page publish
 on:
   schedule:
     # * is a special character in YAML so you have to quote this string
@@ -23,4 +24,4 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
-          publish_branch: master
+          publish_branch: gh-pages
