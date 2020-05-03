@@ -19,6 +19,11 @@ jobs:
       - name: Run script and move to place
         run: ./scripts/output.sh
 
+      - uses: ./.github/actions/debug-action
+        with:
+          amazing-creature: Octocat
+        id: debug
+
       - name: deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
