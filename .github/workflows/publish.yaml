@@ -19,6 +19,7 @@ jobs:
       - name: Run script and move to place
         run: ./scripts/output.sh
 
+      - run: npm install
       - run: npm run build
 
       - uses: ./.github/actions/debug-action
